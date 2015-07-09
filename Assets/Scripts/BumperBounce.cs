@@ -21,7 +21,7 @@ public class BumperBounce : MonoBehaviour {
 
 		float angularVelocityInDegrees = angleInRadians * 180.0f / Mathf.PI;  
 
-		rigidBody.angularVelocity = 2 * angularVelocityInDegrees * -Mathf.Sign(newVelocity.x); 
+		rigidBody.angularVelocity = -2 * angularVelocityInDegrees * Mathf.Sign(newVelocity.x); 
 
 		rigidBody.velocity = newVelocity; 
 	}
