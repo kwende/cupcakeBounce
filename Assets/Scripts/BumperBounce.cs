@@ -2,6 +2,19 @@
 using System.Collections;
 
 public class BumperBounce : MonoBehaviour {
+	
+	void OnMouseDown()
+	{
+
+	}
+
+	void OnMouseDrag()
+	{
+		Vector3 currentPosition = Camera.main.ScreenToWorldPoint (Input.mousePosition); 
+		currentPosition.z = transform.position.z; 
+
+		transform.position = currentPosition; 
+	}
 
 	void OnTriggerEnter2D(Collider2D collisionObject)
 	{
