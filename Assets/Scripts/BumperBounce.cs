@@ -7,22 +7,19 @@ public class BumperBounce : MonoBehaviour {
 	{
 		Rigidbody2D rigidBody = collisionObject.GetComponent<Rigidbody2D> (); 
 
-		Vector2 offset = collisionObject.transform.position - transform.position; 
+		Vector2 newVelocity = (collisionObject.transform.position - transform.position).normalized * 15f; 
 
-		Vector2 newVelocity = offset.normalized * 15f; //rigidBody.velocity.magnitude * 1.1f;
-		Vector2 originalVelocity = rigidBody.velocity.normalized; 
-
-		Vector2 flippedOriginalVelocity = originalVelocity * -1.0f; 
+		Vector2 flippedOriginalVelocity = rigidBody.velocity.normalized * -1.0f; 
 		Vector2 newVelocityNormalized = newVelocity.normalized; 
 
 		float dotProduct = Vector2.Dot (flippedOriginalVelocity, newVelocityNormalized); 
 
-		float angleInRadians = Mathf.Acos (dotProduct); 
+		RaycastHit2D hit = Physics2D.Raycast (rigidBody.transform.position, rigidBody.velocity); 
 
-		float angularVelocityInDegrees = angleInRadians * 180.0f / Mathf.PI;  
+		Vector2 hitPoint = hit.point; 
+		Vector2 centerOfObject = rigidBody.centerOfMass; 
 
-		rigidBody.angularVelocity = 2 * angularVelocityInDegrees * Mathf.Sign(newVelocity.x) * Mathf.Sign(newVelocity.y); 
-
+		rigidBody.angularVelocity = dotProduct * rigidBody.velocity.magnitude * -20 * Mathf.Sign(newVelocity.x); 
 		rigidBody.velocity = newVelocity; 
 	}
 }
