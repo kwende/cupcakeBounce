@@ -5,7 +5,7 @@ public class BumperBounce : MonoBehaviour {
 	
 	void OnMouseDown()
 	{
-
+		Debug.Log ("MouseDown."); 
 	}
 
 	void OnMouseDrag()
