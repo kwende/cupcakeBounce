@@ -3,6 +3,7 @@ using System.Collections;
 
 public class ShowGUI : MonoBehaviour {
 
+	public GameObject Cupcake; 
 	public GameObject UIPrefab; 
 	private GameObject _windowInstance; 
 
@@ -20,6 +21,10 @@ public class ShowGUI : MonoBehaviour {
 		} 
 		else if (Input.GetKeyDown(KeyCode.T) && _windowInstance != null){
 			Destroy(_windowInstance); 
+		}
+
+		if (Input.GetKeyDown (KeyCode.B)) {
+			GameObject cupcake = Instantiate(Cupcake, new Vector3(0, 10, 0), new Quaternion(0, 0, 0, 0)) as GameObject; 
 		}
 	}
 }
