@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DestroyBear : MonoBehaviour {
+public class DestroyOffScreen : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
