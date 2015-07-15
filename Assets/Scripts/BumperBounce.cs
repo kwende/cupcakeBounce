@@ -42,6 +42,14 @@ public class BumperBounce : MonoBehaviour {
 			}
 		}
 
+		AudioSource source = this.GetComponent<AudioSource>(); 
+		
+		if(!source.isPlaying)
+		{
+			source.Stop(); 
+		}
+		source.Play(); 
+
 		Vector2 newVelocity = (collisionObject.transform.position - transform.position).normalized * 15f; 
 		Vector2 centerOfObject = rigidBody.centerOfMass; 
 

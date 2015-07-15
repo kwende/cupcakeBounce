@@ -10,7 +10,7 @@ public class RandomBrickPlacment : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 	
-		int numberOfSixBricks = Random.Range (1, 3); 
+		/*int numberOfSixBricks = Random.Range (1, 3); 
 		int numberOfThreeBricks = Random.Range (1, 4); 
 		int numberOfOneBrick = Random.Range (1, 6); 
 
@@ -33,6 +33,6 @@ public class RandomBrickPlacment : MonoBehaviour {
 			int y = Random.Range(-10, 10); 
 			
 			Instantiate(OneBrick, new Vector3(x, y, 0), new Quaternion(0, 0, 0, 0)); 
-		}
+		}*/
 	}
 }

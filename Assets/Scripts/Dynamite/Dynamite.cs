@@ -6,6 +6,7 @@ public class Dynamite : MonoBehaviour {
 
 	private bool _timerStarted = false; 
 	private int _timerCount= 0; 
+	private bool _kaboomed = false; 
 
 	private void SetLight(bool set){
 		Renderer[] childRenderers = this.gameObject.GetComponentsInChildren<Renderer> (); 
@@ -44,14 +45,24 @@ public class Dynamite : MonoBehaviour {
 			if(_timerCount > 30 * 6){
 				Destroy (this.gameObject); 
 			}
-			else if(_timerCount > 30 * 5){
+			else if(_timerCount > 30 * 5 && !_kaboomed){
 				SetKaboom(true); 
 				TossNearbyObjects(); 
+
+				_kaboomed = true; 
 			}
 		}
 	}
 
 	private void TossNearbyObjects(){
+		AudioSource source = this.GetComponent<AudioSource>(); 
+		
+		if(!source.isPlaying)
+		{
+			source.Stop(); 
+		}
+		source.Play(); 
+
 		Rigidbody2D[] rigidBodies = GameObject.FindObjectsOfType<Rigidbody2D> (); 
 
 		Vector3 myPosition = this.gameObject.transform.position; 
@@ -68,7 +79,7 @@ public class Dynamite : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D collidedWith){
 
 		Rigidbody2D rigidBody = this.gameObject.GetComponent<Rigidbody2D> (); 
-		if (rigidBody.velocity.magnitude > 4) {
+		if (rigidBody.velocity.magnitude > 1) {
 			Debug.Log ("I hit something.");
 			_timerStarted = true; 
 			SetLight(true); 
@@ -80,7 +91,7 @@ public class Dynamite : MonoBehaviour {
 		bool isNotNull = otherRigidBody != null; 
 
 		if (otherRigidBody != null) {
-			if(otherRigidBody.velocity.magnitude > 4){
+			if(otherRigidBody.velocity.magnitude > 1){
 				Debug.Log("Something hit me at velocity " + otherRigidBody.velocity.magnitude.ToString()); 
 				_timerStarted = true;
 				SetLight(true); 
