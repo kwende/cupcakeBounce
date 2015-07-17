@@ -8,7 +8,6 @@ public class CupcakeApendage : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D collidedWith){
 		if (collidedWith.rigidbody != null && 
-		    collidedWith.rigidbody.name.Contains("cannonball") && 
 		    collidedWith.rigidbody.velocity.magnitude > 10) {
 			// splinter. 
 			DistanceJoint2D joint = this.gameObject.GetComponent<DistanceJoint2D> (); 

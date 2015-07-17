@@ -42,7 +42,7 @@ public class Dynamite : MonoBehaviour {
 		if (_timerStarted) {
 			_timerCount++; 
 
-			if(_timerCount > 30 * 6){
+			if(_timerCount > 30 * 8){
 				Destroy (this.gameObject); 
 			}
 			else if(_timerCount > 30 * 5 && !_kaboomed){
@@ -71,7 +71,7 @@ public class Dynamite : MonoBehaviour {
 			Vector3 offsetVector = (rigidBody.position - (Vector2)myPosition);
 
 			if(offsetVector.magnitude < 10){
-				rigidBody.velocity = offsetVector.normalized * 20; 
+				rigidBody.velocity = offsetVector.normalized * 50; 
 			}
 		}
 	}
