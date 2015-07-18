@@ -12,6 +12,9 @@ public class SanityCheck : MonoBehaviour {
 		GameObject go = Instantiate (ObjectToAdd, 
 		                             new Vector3(0, 0, 0), 
 		                             new Quaternion(0, 0, 0, 0)) as GameObject; 
+
+		ShowGUI guiWindow = ScriptableObject.FindObjectOfType<ShowGUI> (); 
+		guiWindow.CloseWindow (); 
 	}
 
 	// Use this for initialization

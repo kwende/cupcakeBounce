@@ -5,22 +5,29 @@ public class ShowGUI : MonoBehaviour {
 
 	public GameObject Cupcake; 
 	public GameObject UIPrefab; 
-	private GameObject _windowInstance; 
+	public GameObject CurrentWindowInstance { get; private set; }
 
 	// Use this for initialization
 	void Start () {
 	
 	}
+
+	public void CloseWindow(){
+		if (CurrentWindowInstance != null) {
+			Destroy(CurrentWindowInstance); 
+			CurrentWindowInstance = null; 
+		}
+	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.T) && _windowInstance == null) {
-			_windowInstance = Instantiate(UIPrefab); 
+		if (Input.GetKeyDown (KeyCode.T) && CurrentWindowInstance == null) {
+			CurrentWindowInstance = Instantiate(UIPrefab); 
 			GameObject go = GameObject.Find("TheCanvas"); 
-			_windowInstance.transform.SetParent(go.transform, false); 
+			CurrentWindowInstance.transform.SetParent(go.transform, false); 
 		} 
-		else if (Input.GetKeyDown(KeyCode.T) && _windowInstance != null){
-			Destroy(_windowInstance); 
+		else if (Input.GetKeyDown(KeyCode.T) && CurrentWindowInstance != null){
+			CloseWindow(); 
 		}
 
 		if (Input.GetKeyDown (KeyCode.B)) {
