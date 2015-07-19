@@ -2,11 +2,11 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class SanityCheck : MonoBehaviour {
+public class HandleObjectAddClick : MonoBehaviour {
 
 	public GameObject ObjectToAdd; 
 
-	void DoSomethingCool(){
+	void ClickHandler(){
 		Debug.Log ("Button clicked."); 
 
 		GameObject go = Instantiate (ObjectToAdd, 
@@ -22,7 +22,7 @@ public class SanityCheck : MonoBehaviour {
 		Debug.Log ("Setting up event..."); 
 
 		Button btn = this.GetComponent<Button> (); 
-		btn.onClick.AddListener (DoSomethingCool); 
+		btn.onClick.AddListener (ClickHandler); 
 
 		Debug.Log ("...done"); 
 	}
