@@ -12,6 +12,7 @@ public class HandleObjectAddClick : MonoBehaviour {
 		GameObject go = Instantiate (ObjectToAdd, 
 		                             new Vector3(0, 0, 0), 
 		                             new Quaternion(0, 0, 0, 0)) as GameObject; 
+		go.GetComponent<Rigidbody2D> ().isKinematic = true; 
 
 		ShowGUI guiWindow = ScriptableObject.FindObjectOfType<ShowGUI> (); 
 		guiWindow.CloseWindow (); 
